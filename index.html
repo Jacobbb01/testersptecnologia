@@ -6,6 +6,8 @@
   <title>RSP Tecnologia</title>
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <script>
     tailwind.config = {
       theme: {
@@ -42,13 +44,28 @@
       white-space: nowrap;
       border-width: 0;
     }
+
+    .swiper-container {
+      overflow: hidden;
+    }
+
+    .swiper-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-white">
   <!-- Header -->
   <header class="bg-gray-900 text-white px-6 py-4 flex justify-between items-center shadow-md relative z-50">
     <div class="flex items-center">
-      <img src="https://via.placeholder.com/120x32" alt="Logo RSP" class="h-8 w-auto">
+      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tec%20branca-xfOV63IyNkkOWDusQ6baU1SDhHLR7I.png" alt="Logo RSP Tecnologia" class="h-6 md:h-8 w-auto">
     </div>
 
     <!-- Desktop Navigation -->
@@ -115,7 +132,7 @@
   <section id="inicio" class="relative w-full h-screen flex items-center justify-center text-center text-white bg-gray-950 overflow-hidden">
     <canvas id="backgroundEffect" class="absolute inset-0 z-0 pointer-events-none"></canvas>
     <div class="z-10 max-w-2xl px-4">
-      <img src="https://via.placeholder.com/160x160" alt="Logo RSP" class="mx-auto w-40 mb-6">
+      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tec%20branca-xfOV63IyNkkOWDusQ6baU1SDhHLR7I.png" alt="Logo RSP Tecnologia" class="mx-auto w-32 md:w-40 mb-6">
       <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4">
         Modernize o seu TI sem os custos e compromissos de aquisição.
       </h1>
@@ -131,55 +148,81 @@
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section id="servicos" class="py-20 bg-white text-gray-800 text-center">
+  <!-- Quem Somos Section -->
+  <section id="quemsomos" class="py-20 bg-gray-50 text-gray-800">
     <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold mb-10">Nossos Serviços</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <div class="bg-white shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 border border-gray-100">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-left md:text-left">Conheça a RSP Tecnologia</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BzH6iFZ3tbuRt68uOCqCOEL16KoyeR.png" alt="Equipe RSP Tecnologia trabalhando" class="w-full h-auto rounded-xl shadow-lg object-cover">
+        </div>
+        <div class="order-1 lg:order-2 text-left">
+          <p class="text-lg mb-6 leading-relaxed">
+            Somos uma empresa sediada em Conselheiro Lafaiete-MG, com mais de dois anos de atuação no mercado, oferecendo soluções inteligentes em tecnologia da informação para empresas e profissionais da região.
+          </p>
+          <p class="text-lg mb-6 leading-relaxed">
+            Oferecemos locação de equipamentos de informática como notebooks, impressoras e dispositivos de rede, além de serviços especializados em manutenção, suporte técnico e venda de equipamentos.
+          </p>
+          <p class="text-lg mb-6 leading-relaxed">
+            Nosso foco é a excelência no atendimento, pois sabemos que a tecnologia certa, com o suporte ideal, transforma diretamente os resultados dos nossos clientes.
+          </p>
+          <p class="text-lg leading-relaxed">
+            Também realizamos treinamentos e consultorias em softwares de TI como Excel, Power BI, Qlik Sense, MS Project e Primavera P6. <span class="text-yellow-500 font-semibold">Conheça nossos cursos.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="servicos" class="py-20 bg-white text-gray-800">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-left md:text-left">Nossos Serviços</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-start mx-auto">
+        <div class="bg-white shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 border border-gray-100 mx-auto w-full max-w-sm">
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-4xl text-yellow-500 mb-4 mx-auto">
             <circle cx="8" cy="21" r="1"></circle>
             <circle cx="19" cy="21" r="1"></circle>
             <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
           </svg>
-          <h3 class="text-xl font-semibold mb-2">Automação Comercial</h3>
-          <p class="text-gray-600">Sistemas NFE | Equipamentos</p>
+          <h3 class="text-xl font-semibold mb-2 text-center">Automação Comercial</h3>
+          <p class="text-gray-600 text-center">Sistemas NFE | Equipamentos</p>
         </div>
-        <div class="bg-white shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 border border-gray-100">
+        <div class="bg-white shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 border border-gray-100 mx-auto w-full max-w-sm">
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-4xl text-yellow-500 mb-4 mx-auto">
             <rect width="18" height="12" x="3" y="4" rx="2" ry="2"></rect>
             <line x1="2" x2="22" y1="20" y2="20"></line>
           </svg>
-          <h3 class="text-xl font-semibold mb-2">Notebooks</h3>
-          <p class="text-gray-600">Locação | Venda | Manutenção</p>
+          <h3 class="text-xl font-semibold mb-2 text-center">Notebooks</h3>
+          <p class="text-gray-600 text-center">Locação | Venda | Manutenção</p>
         </div>
-        <div class="bg-white shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 border border-gray-100">
+        <div class="bg-white shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 border border-gray-100 mx-auto w-full max-w-sm">
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-4xl text-yellow-500 mb-4 mx-auto">
             <polyline points="6 9 6 2 18 2 18 9"></polyline>
             <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
             <rect width="12" height="8" x="6" y="14"></rect>
           </svg>
-          <h3 class="text-xl font-semibold mb-2">Impressoras</h3>
-          <p class="text-gray-600">Locação | Venda | Manutenção</p>
+          <h3 class="text-xl font-semibold mb-2 text-center">Impressoras</h3>
+          <p class="text-gray-600 text-center">Locação | Venda | Manutenção</p>
         </div>
-        <div class="bg-white shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 border border-gray-100">
+        <div class="bg-white shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 border border-gray-100 mx-auto w-full max-w-sm">
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-4xl text-yellow-500 mb-4 mx-auto">
             <rect width="20" height="14" x="2" y="3" rx="2"></rect>
             <line x1="8" x2="16" y1="21" y2="21"></line>
             <line x1="12" x2="12" y1="17" y2="21"></line>
           </svg>
-          <h3 class="text-xl font-semibold mb-2">Computadores | Redes</h3>
-          <p class="text-gray-600">Soluções em rede | Venda | Manutenção</p>
+          <h3 class="text-xl font-semibold mb-2 text-center">Computadores | Redes</h3>
+          <p class="text-gray-600 text-center">Soluções em rede | Venda | Manutenção</p>
         </div>
-        <div class="bg-white shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 border border-gray-100 md:col-span-2 lg:col-span-1">
+        <div class="bg-white shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 border border-gray-100 mx-auto w-full max-w-sm md:col-span-2 lg:col-span-1">
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-4xl text-yellow-500 mb-4 mx-auto">
             <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
             <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
             <line x1="6" y1="6" x2="6.01" y2="6"></line>
             <line x1="6" y1="18" x2="6.01" y2="18"></line>
           </svg>
-          <h3 class="text-xl font-semibold mb-2">Serviços de Informação</h3>
-          <p class="text-gray-600">Redes | Servidores | Soluções TI</p>
+          <h3 class="text-xl font-semibold mb-2 text-center">Serviços de Informação</h3>
+          <p class="text-gray-600 text-center">Redes | Servidores | Soluções TI</p>
         </div>
       </div>
     </div>
@@ -188,9 +231,9 @@
   <!-- Why Rent Section -->
   <section id="locacao" class="py-20 bg-gray-50 text-gray-800">
     <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Por que Alugar?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-left md:text-left">Por que Alugar?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-start mx-auto max-w-6xl">
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 mx-auto w-full max-w-sm">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
             <circle cx="12" cy="12" r="10"></circle>
             <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
@@ -199,7 +242,7 @@
           <h3 class="font-semibold text-lg mb-2">Controle de Custos</h3>
           <p class="text-gray-600">Evite imobilizar capital. Direcione recursos para onde importa.</p>
         </div>
-        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105">
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 mx-auto w-full max-w-sm">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
             <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
             <polyline points="14 2 14 8 20 8"></polyline>
@@ -207,7 +250,7 @@
           <h3 class="font-semibold text-lg mb-2">Benefício Fiscal</h3>
           <p class="text-gray-600">Dedução de IRPJ para empresas de lucro real.</p>
         </div>
-        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105">
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 mx-auto w-full max-w-sm">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
             <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
             <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
@@ -215,7 +258,7 @@
           <h3 class="font-semibold text-lg mb-2">Suporte Técnico</h3>
           <p class="text-gray-600">Assistência contínua durante todo o contrato de locação.</p>
         </div>
-        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105">
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 mx-auto w-full max-w-sm">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
             <path d="M10 17h4V9h-4z"></path>
             <path d="M4 17h4V5H4z"></path>
@@ -224,7 +267,7 @@
           <h3 class="font-semibold text-lg mb-2">Logística Inteligente</h3>
           <p class="text-gray-600">Instalação e suporte para home office e empresas.</p>
         </div>
-        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 md:col-span-2 lg:col-span-1">
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 mx-auto w-full max-w-sm md:col-span-2 lg:col-span-1">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
           </svg>
@@ -236,13 +279,30 @@
   </section>
 
   <!-- Clients Section -->
-  <section class="py-20 bg-white text-gray-800 text-center">
+  <section class="py-20 bg-white text-gray-800">
     <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold mb-10">Nossos Clientes</h2>
-      <div class="flex flex-wrap justify-center gap-10 items-center">
-        <img src="https://via.placeholder.com/120x48" alt="Eletrogen" class="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity">
-        <img src="https://via.placeholder.com/120x48" alt="WM Manutenções" class="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity">
-        <img src="https://via.placeholder.com/120x48" alt="Freitas" class="h-12 w-auto opacity-70 hover:opacity-100 transition-opacity">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-left md:text-left">Nossos Clientes</h2>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="https://blob.v0.dev/DYkrHPTAvuzQeXcAd5RFrN" alt="Eletrogen" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://blob.v0.dev/LppNNGwVj1s5vhHgz2CXzf" alt="WM Manutenções" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://blob.v0.dev/MTFGKjtnN9fV9vMEXbHqZK" alt="Freitas" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://blob.v0.dev/XwtFyBwbT5vRRY8k3hERVr" alt="Rede" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://blob.v0.dev/9ZidSxyS397JHigCMRyjqM" alt="Geoprojetos" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+          </div>
+          <div class="swiper-slide">
+            <img src="https://blob.v0.dev/SS4seDL3m1RfZ2DkB7TsXo" alt="Akafloor" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -251,7 +311,7 @@
   <footer id="contato" class="bg-gray-900 text-white py-10 px-6">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
       <div>
-        <img src="https://via.placeholder.com/120x40" alt="Logo RSP" class="h-10 w-auto mb-4">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tec%20branca-xfOV63IyNkkOWDusQ6baU1SDhHLR7I.png" alt="Logo RSP Tecnologia" class="h-10 w-auto mb-4">
         <p class="text-gray-300 mb-4">Te ajudamos a encontrar o equilíbrio que você busca.</p>
         <div class="flex space-x-4">
           <a href="https://facebook.com/rsptecnologia" target="_blank" class="text-gray-300 hover:text-yellow-400 transition-colors">
@@ -324,6 +384,9 @@
     </div>
   </footer>
 
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <script>
     // Mobile menu toggle
     document.addEventListener('DOMContentLoaded', function() {
@@ -336,6 +399,31 @@
         mobileMenu.classList.toggle('hidden');
         menuIcon.classList.toggle('hidden');
         closeIcon.classList.toggle('hidden');
+      });
+
+      // Initialize Swiper for clients carousel
+      const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        slidesPerView: 2,
+        spaceBetween: 30,
+        breakpoints: {
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 50,
+          },
+          1024: {
+            slidesPerView: 6,
+            spaceBetween: 60,
+          },
+        },
       });
     });
 
