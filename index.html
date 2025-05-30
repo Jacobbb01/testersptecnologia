@@ -60,6 +60,22 @@
       justify-content: center;
       align-items: center;
     }
+
+    .contact-bg {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+      position: relative;
+    }
+
+    .contact-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-white">
@@ -276,7 +292,10 @@
           <p class="text-gray-600">Equipamentos modernos com upgrades futuros inclusos.</p>
         </div>
         <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 w-full max-w-sm">
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Design%20sem%20nome%20%2857%29-fGKEPyx2kTegnsavnPhWiPf2kIQTr9.png" alt="Equipe de colaboradores" width="32" height="32" class="mb-4" style="filter: brightness(0) saturate(100%) invert(64%) sepia(98%) saturate(1000%) hue-rotate(35deg) brightness(95%) contrast(95%);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12,6 12,12 16,14"></polyline>
+          </svg>
           <h3 class="font-semibold text-lg mb-2">Tempo Otimizado</h3>
           <p class="text-gray-600">Tempo dos colaboradores otimizado para poderem focar em outras funções.</p>
         </div>
@@ -317,81 +336,92 @@
   </section>
 
   <!-- Contact Form Section -->
-  <section id="contato-form" class="py-20 bg-gray-50 text-gray-800">
-    <div class="container mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-        <!-- Left Side - Information -->
-        <div class="text-left lg:pr-8">
-          <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: #232323;">RSP TECNOLOGIA</h2>
-          <p class="text-lg md:text-xl mb-8 leading-relaxed text-gray-700">
-            Modernize o seu TI sem os custos e compromissos de aquisição.<br>
-            Concentre-se somente no que importa, e deixe o restante com a gente.
-          </p>
-          
-          <!-- Contact Information -->
-          <div class="space-y-4">
-            <div class="flex items-center space-x-3">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-600">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-              </svg>
-              <span class="text-lg font-medium">(31) 99578-0054</span>
-            </div>
-            <div class="flex items-center space-x-3">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-600">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              <span class="text-lg font-medium">contato@rsptech.com.br</span>
+  <section id="contato-form" class="contact-bg text-white relative overflow-hidden">
+    <div class="relative z-10 py-20">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+          <!-- Left Side - Information -->
+          <div class="text-left lg:pr-8">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">RSP Tecnologia</h2>
+            <div class="w-16 h-1 bg-yellow-600 mb-8"></div>
+            
+            <p class="text-lg mb-8 leading-relaxed text-gray-200">
+              Se você está em busca de soluções personalizadas e eficazes para atender às suas necessidades, convidamos você a entrar em contato conosco. Nossa equipe está à disposição para oferecer consultoria e esclarecimentos, garantindo que sua experiência conosco seja excepcional.
+            </p>
+            
+            <!-- Contact Information -->
+            <div class="space-y-4">
+              <div class="flex items-center space-x-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span class="text-lg text-white">(31) 99578-0054</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span class="text-lg text-white">(31) 99578-0054</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span class="text-lg text-white">contato@rsptech.com.br</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Right Side - Contact Form -->
-        <div class="bg-white rounded-xl shadow-lg p-8">
-          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6">
-            <div>
-              <label for="nome" class="block text-sm font-medium text-gray-700 mb-2">Nome</label>
-              <input 
-                type="text" 
-                id="nome" 
-                name="nome" 
-                required 
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-yellow-600 transition-colors"
-                placeholder="Seu nome completo"
+          <!-- Right Side - Contact Form -->
+          <div class="relative">
+            <div class="text-center mb-8">
+              <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Fale conosco</h3>
+              <p class="text-gray-300">Agende sua reunião preenchendo o formulário abaixo</p>
+            </div>
+            
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6">
+              <div>
+                <input 
+                  type="text" 
+                  id="nome" 
+                  name="nome" 
+                  required 
+                  class="w-full px-4 py-4 bg-transparent border border-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-yellow-600 transition-colors text-white placeholder-gray-300"
+                  placeholder="Seu nome"
+                >
+              </div>
+              
+              <div>
+                <input 
+                  type="tel" 
+                  id="telefone" 
+                  name="telefone" 
+                  required 
+                  class="w-full px-4 py-4 bg-transparent border border-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-yellow-600 transition-colors text-white placeholder-gray-300"
+                  placeholder="Seu telefone"
+                >
+              </div>
+              
+              <div>
+                <textarea 
+                  id="mensagem" 
+                  name="mensagem" 
+                  rows="5" 
+                  required 
+                  class="w-full px-4 py-4 bg-transparent border border-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-yellow-600 transition-colors resize-vertical text-white placeholder-gray-300"
+                  placeholder="Sua mensagem"
+                ></textarea>
+              </div>
+              
+              <button 
+                type="submit" 
+                class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-4 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg text-lg"
               >
-            </div>
-            
-            <div>
-              <label for="telefone" class="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
-              <input 
-                type="tel" 
-                id="telefone" 
-                name="telefone" 
-                required 
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-yellow-600 transition-colors"
-                placeholder="(31) 99999-9999"
-              >
-            </div>
-            
-            <div>
-              <label for="mensagem" class="block text-sm font-medium text-gray-700 mb-2">Mensagem</label>
-              <textarea 
-                id="mensagem" 
-                name="mensagem" 
-                rows="5" 
-                required 
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-yellow-600 transition-colors resize-vertical"
-                placeholder="Descreva como podemos ajudá-lo..."
-              ></textarea>
-            </div>
-            
-            <button 
-              type="submit" 
-              class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-3 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg"
-            >
-              Enviar
-            </button>
-          </form>
+                Enviar
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
