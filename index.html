@@ -21,7 +21,8 @@
             green: {
               500: '#22c55e',
               600: '#16a34a'
-            }
+            },
+            header: '#303030'
           }
         }
       }
@@ -76,52 +77,118 @@
       background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
       opacity: 0.3;
     }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid #eab308;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background-color: #eab308;
+      transform: translateY(-2px);
+    }
+
+    .social-icon:hover svg {
+      color: #303030;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-white">
   <!-- Header -->
-  <header class="bg-gray-900 text-white px-6 py-4 flex justify-between items-center shadow-md relative z-50">
+  <header class="bg-header text-white px-6 py-4 flex justify-between items-center shadow-md relative z-50">
     <div class="flex items-center">
       <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tec%20branca-xfOV63IyNkkOWDusQ6baU1SDhHLR7I.png" alt="Logo RSP Tecnologia" class="h-6 md:h-8 w-auto">
     </div>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden lg:flex space-x-6 uppercase text-sm tracking-wide font-medium">
-      <button onclick="scrollToSection('inicio')" class="hover:text-yellow-400 transition-colors">
-        Início
-      </button>
-      <button onclick="scrollToSection('quemsomos')" class="hover:text-yellow-400 transition-colors">
-        Quem Somos
-      </button>
-      <button onclick="scrollToSection('locacao')" class="hover:text-yellow-400 transition-colors">
-        Locação
-      </button>
-      <button onclick="scrollToSection('vendas')" class="hover:text-yellow-400 transition-colors">
-        Vendas
-      </button>
-      <button onclick="scrollToSection('automacao')" class="hover:text-yellow-400 transition-colors">
-        Automação Comercial
-      </button>
-      <button onclick="scrollToSection('contato')" class="hover:text-yellow-400 transition-colors">
-        Contato
-      </button>
-    </nav>
+    <div class="hidden lg:flex items-center">
+      <nav class="flex space-x-6 uppercase text-sm tracking-wide font-medium mr-8">
+        <button onclick="scrollToSection('inicio')" class="hover:text-yellow-400 transition-colors">
+          Início
+        </button>
+        <button onclick="scrollToSection('quemsomos')" class="hover:text-yellow-400 transition-colors">
+          Quem Somos
+        </button>
+        <button onclick="scrollToSection('locacao')" class="hover:text-yellow-400 transition-colors">
+          Locação
+        </button>
+        <button onclick="scrollToSection('vendas')" class="hover:text-yellow-400 transition-colors">
+          Vendas
+        </button>
+        <button onclick="scrollToSection('automacao')" class="hover:text-yellow-400 transition-colors">
+          Automação Comercial
+        </button>
+        <button onclick="scrollToSection('contato')" class="hover:text-yellow-400 transition-colors">
+          Contato
+        </button>
+      </nav>
+      
+      <!-- Social Icons -->
+      <div class="flex space-x-3">
+        <a href="https://www.facebook.com/rsptecnologias" target="_blank" class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/rsptecnologia/" target="_blank" class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://wa.me/31995780054" target="_blank" class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
 
     <!-- Mobile Menu Button -->
-    <button class="lg:hidden" id="menuToggle">
-      <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
-        <line x1="4" x2="20" y1="12" y2="12"></line>
-        <line x1="4" x2="20" y1="6" y2="6"></line>
-        <line x1="4" x2="20" y1="18" y2="18"></line>
-      </svg>
-      <svg id="closeIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x hidden">
-        <path d="M18 6 6 18"></path>
-        <path d="m6 6 12 12"></path>
-      </svg>
-    </button>
+    <div class="lg:hidden flex items-center">
+      <!-- Mobile Social Icons -->
+      <div class="flex space-x-2 mr-4">
+        <a href="https://www.facebook.com/rsptecnologias" target="_blank" class="social-icon" style="width: 32px; height: 32px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/rsptecnologia/" target="_blank" class="social-icon" style="width: 32px; height: 32px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://wa.me/31995780054" target="_blank" class="social-icon" style="width: 32px; height: 32px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+        </a>
+      </div>
+      
+      <button class="lg:hidden" id="menuToggle">
+        <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+        <svg id="closeIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x hidden">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </div>
 
     <!-- Mobile Navigation -->
-    <div id="mobileMenu" class="absolute top-full left-0 right-0 bg-gray-900 lg:hidden hidden">
+    <div id="mobileMenu" class="absolute top-full left-0 right-0 bg-header lg:hidden hidden">
       <nav class="flex flex-col space-y-4 p-6 uppercase text-sm tracking-wide font-medium">
         <button onclick="scrollToSection('inicio')" class="hover:text-yellow-400 transition-colors text-left">
           Início
@@ -346,11 +413,17 @@
             <div class="w-16 h-1 bg-yellow-600 mb-8"></div>
             
             <p class="text-lg mb-8 leading-relaxed text-gray-200">
-              Modernize o seu TI sem os custos e compromissos de aquisição. Concentre-se somente no que importa, e deixe o restante com a gente.
+              Se você está em busca de soluções personalizadas e eficazes para atender às suas necessidades, convidamos você a entrar em contato conosco. Nossa equipe está à disposição para oferecer consultoria e esclarecimentos, garantindo que sua experiência conosco seja excepcional.
             </p>
             
             <!-- Contact Information -->
             <div class="space-y-4">
+              <div class="flex items-center space-x-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span class="text-lg text-white">(31) 99578-0054</span>
+              </div>
               <div class="flex items-center space-x-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
@@ -422,26 +495,26 @@
   </section>
 
   <!-- Footer -->
-  <footer id="contato" class="bg-gray-900 text-white py-10 px-6">
+  <footer id="contato" class="bg-header text-white py-10 px-6">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
       <div>
         <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tec%20branca-xfOV63IyNkkOWDusQ6baU1SDhHLR7I.png" alt="Logo RSP Tecnologia" class="h-10 w-auto mb-4">
         <p class="text-gray-300 mb-4">Te ajudamos a encontrar o equilíbrio que você busca.</p>
-        <div class="flex space-x-4">
-          <a href="https://facebook.com/rsptecnologia" target="_blank" class="text-gray-300 hover:text-yellow-400 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="flex space-x-3">
+          <a href="https://www.facebook.com/rsptecnologias" target="_blank" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
             </svg>
           </a>
-          <a href="https://instagram.com/rsptecnologia" target="_blank" class="text-gray-300 hover:text-yellow-400 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <a href="https://www.instagram.com/rsptecnologia/" target="_blank" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
               <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
               <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
             </svg>
           </a>
-          <a href="https://wa.me/31995780054" target="_blank" class="text-gray-300 hover:text-yellow-400 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <a href="https://wa.me/31995780054" target="_blank" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500">
               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
             </svg>
           </a>
