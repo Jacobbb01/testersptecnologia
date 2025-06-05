@@ -148,22 +148,22 @@
     <!-- Desktop Navigation -->
     <div class="hidden lg:flex items-center">
       <nav class="flex space-x-6 uppercase text-sm tracking-wide font-medium mr-8">
-        <button onclick="showPage('home')" class="nav-link hover:text-yellow-400 transition-colors" data-page="home">
+        <button onclick="showPage('home')" class="nav-link text-white hover:text-yellow-400 transition-colors" data-page="home">
           Início
         </button>
-        <button onclick="scrollToSection('quemsomos')" class="nav-link hover:text-yellow-400 transition-colors" data-page="home">
+        <button onclick="scrollToSection('quemsomos')" class="nav-link text-white hover:text-yellow-400 transition-colors" data-page="home">
           Quem Somos
         </button>
-        <button onclick="showPage('locacao')" class="nav-link hover:text-yellow-400 transition-colors" data-page="locacao">
+        <button onclick="showPage('locacao')" class="nav-link text-white hover:text-yellow-400 transition-colors" data-page="locacao">
           Locação
         </button>
-        <button onclick="showPage('vendas')" class="nav-link hover:text-yellow-400 transition-colors" data-page="vendas">
+        <button onclick="showPage('vendas')" class="nav-link text-white hover:text-yellow-400 transition-colors" data-page="vendas">
           Vendas
         </button>
-        <button onclick="showPage('automacao')" class="nav-link hover:text-yellow-400 transition-colors" data-page="automacao">
+        <button onclick="showPage('automacao')" class="nav-link text-white hover:text-yellow-400 transition-colors" data-page="automacao">
           Automação Comercial
         </button>
-        <button onclick="scrollToSection('contato')" class="nav-link hover:text-yellow-400 transition-colors" data-page="home">
+        <button onclick="scrollToSection('contato')" class="nav-link text-white hover:text-yellow-400 transition-colors" data-page="home">
           Contato
         </button>
       </nav>
@@ -229,22 +229,22 @@
     <!-- Mobile Navigation -->
     <div id="mobileMenu" class="absolute top-full left-0 right-0 bg-header lg:hidden hidden">
       <nav class="flex flex-col space-y-4 p-6 uppercase text-sm tracking-wide font-medium">
-        <button onclick="showPage('home')" class="nav-link hover:text-yellow-400 transition-colors text-left" data-page="home">
+        <button onclick="showPage('home')" class="nav-link text-white hover:text-yellow-400 transition-colors text-left" data-page="home">
           Início
         </button>
-        <button onclick="scrollToSection('quemsomos')" class="nav-link hover:text-yellow-400 transition-colors text-left" data-page="home">
+        <button onclick="scrollToSection('quemsomos')" class="nav-link text-white hover:text-yellow-400 transition-colors text-left" data-page="home">
           Quem Somos
         </button>
-        <button onclick="showPage('locacao')" class="nav-link hover:text-yellow-400 transition-colors text-left" data-page="locacao">
+        <button onclick="showPage('locacao')" class="nav-link text-white hover:text-yellow-400 transition-colors text-left" data-page="locacao">
           Locação
         </button>
-        <button onclick="showPage('vendas')" class="nav-link hover:text-yellow-400 transition-colors text-left" data-page="vendas">
+        <button onclick="showPage('vendas')" class="nav-link text-white hover:text-yellow-400 transition-colors text-left" data-page="vendas">
           Vendas
         </button>
-        <button onclick="showPage('automacao')" class="nav-link hover:text-yellow-400 transition-colors text-left" data-page="automacao">
+        <button onclick="showPage('automacao')" class="nav-link text-white hover:text-yellow-400 transition-colors text-left" data-page="automacao">
           Automação Comercial
         </button>
-        <button onclick="scrollToSection('contato')" class="nav-link hover:text-yellow-400 transition-colors text-left" data-page="home">
+        <button onclick="scrollToSection('contato')" class="nav-link text-white hover:text-yellow-400 transition-colors text-left" data-page="home">
           Contato
         </button>
       </nav>
@@ -442,6 +442,25 @@
               <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/gruporicardo-logo.png-Pl3iV7o45i7ttcWeDM3tKUxoJbchCe.png" alt="Grupo Ricardo" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google Maps Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-800">Nossa Localização</h2>
+        <div class="overflow-hidden rounded-xl shadow-lg mb-12">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.8234567890123!2d-43.7856789!3d-20.6634567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDM5JzQ4LjQiUyA0M8KwNDcnMDguNCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr&q=Rua+Coronel+João+Gomes,+13,+Santo+Antônio,+Conselheiro+Lafaiete+-+MG,+36401-126"
+            width="100%" 
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            class="w-full min-h-[300px] md:h-[400px]">
+          </iframe>
         </div>
       </div>
     </section>
@@ -718,7 +737,7 @@
                   <span class="text-gray-700">Montagem sob demanda</span>
                 </div>
                 <div class="flex items-center space-x-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="  height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                   <span class="text-gray-700">Peças de alta qualidade</span>
@@ -962,32 +981,32 @@
         <h3 class="font-bold text-lg mb-4">Links Rápidos</h3>
         <ul class="space-y-2 text-gray-300">
           <li>
-            <button onclick="showPage('home')" class="hover:text-yellow-400 transition-colors">
+            <button onclick="showPage('home')" class="text-white hover:text-yellow-400 transition-colors">
               Home
             </button>
           </li>
           <li>
-            <button onclick="scrollToSection('quemsomos')" class="hover:text-yellow-400 transition-colors">
+            <button onclick="scrollToSection('quemsomos')" class="text-white hover:text-yellow-400 transition-colors">
               Quem Somos
             </button>
           </li>
           <li>
-            <button onclick="showPage('locacao')" class="hover:text-yellow-400 transition-colors">
+            <button onclick="showPage('locacao')" class="text-white hover:text-yellow-400 transition-colors">
               Locação
             </button>
           </li>
           <li>
-            <button onclick="showPage('vendas')" class="hover:text-yellow-400 transition-colors">
+            <button onclick="showPage('vendas')" class="text-white hover:text-yellow-400 transition-colors">
               Vendas
             </button>
           </li>
           <li>
-            <button onclick="showPage('automacao')" class="hover:text-yellow-400 transition-colors">
+            <button onclick="showPage('automacao')" class="text-white hover:text-yellow-400 transition-colors">
               Automação Comercial
             </button>
           </li>
           <li>
-            <button onclick="scrollToSection('contato')" class="hover:text-yellow-400 transition-colors">
+            <button onclick="scrollToSection('contato')" class="text-white hover:text-yellow-400 transition-colors">
               Contato
             </button>
           </li>
@@ -1071,7 +1090,9 @@
     function updateNavigation() {
       document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('text-yellow-400');
+        link.classList.add('text-white');
         if (link.dataset.page === currentPage) {
+          link.classList.remove('text-white');
           link.classList.add('text-yellow-400');
         }
       });
