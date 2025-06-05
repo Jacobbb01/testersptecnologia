@@ -97,34 +97,73 @@
     .social-icon:hover svg {
       color: #030712;
     }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background-color: #25D366;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      color: white;
+    }
+
+    .page-section {
+      display: none;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    .page-bg {
+      background-color: #f5f4ea;
+      min-height: 100vh;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-white">
   <!-- Header -->
   <header class="bg-header text-white px-6 py-4 flex justify-between items-center shadow-md relative z-50">
     <div class="flex items-center">
-      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tec%20branca-xfOV63IyNkkOWDusQ6baU1SDhHLR7I.png" alt="Logo RSP Tecnologia" class="h-6 md:h-8 w-auto">
+      <button onclick="showPage('home')" class="cursor-pointer">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tec%20branca-xfOV63IyNkkOWDusQ6baU1SDhHLR7I.png" alt="Logo RSP Tecnologia" class="h-6 md:h-8 w-auto">
+      </button>
     </div>
 
     <!-- Desktop Navigation -->
     <div class="hidden lg:flex items-center">
       <nav class="flex space-x-6 uppercase text-sm tracking-wide font-medium mr-8">
-        <button onclick="scrollToSection('inicio')" class="hover:text-yellow-400 transition-colors">
+        <button onclick="showPage('home')" class="nav-link hover:text-yellow-400 transition-colors" data-page="home">
           Início
         </button>
-        <button onclick="scrollToSection('quemsomos')" class="hover:text-yellow-400 transition-colors">
+        <button onclick="scrollToSection('quemsomos')" class="nav-link hover:text-yellow-400 transition-colors" data-page="home">
           Quem Somos
         </button>
-        <button onclick="scrollToSection('locacao')" class="hover:text-yellow-400 transition-colors">
+        <button onclick="showPage('locacao')" class="nav-link hover:text-yellow-400 transition-colors" data-page="locacao">
           Locação
         </button>
-        <button onclick="scrollToSection('vendas')" class="hover:text-yellow-400 transition-colors">
+        <button onclick="showPage('vendas')" class="nav-link hover:text-yellow-400 transition-colors" data-page="vendas">
           Vendas
         </button>
-        <button onclick="scrollToSection('automacao')" class="hover:text-yellow-400 transition-colors">
+        <button onclick="showPage('automacao')" class="nav-link hover:text-yellow-400 transition-colors" data-page="automacao">
           Automação Comercial
         </button>
-        <button onclick="scrollToSection('contato')" class="hover:text-yellow-400 transition-colors">
+        <button onclick="scrollToSection('contato')" class="nav-link hover:text-yellow-400 transition-colors" data-page="home">
           Contato
         </button>
       </nav>
@@ -190,302 +229,712 @@
     <!-- Mobile Navigation -->
     <div id="mobileMenu" class="absolute top-full left-0 right-0 bg-header lg:hidden hidden">
       <nav class="flex flex-col space-y-4 p-6 uppercase text-sm tracking-wide font-medium">
-        <button onclick="scrollToSection('inicio')" class="hover:text-yellow-400 transition-colors text-left">
+        <button onclick="showPage('home')" class="nav-link hover:text-yellow-400 transition-colors text-left" data-page="home">
           Início
         </button>
-        <button onclick="scrollToSection('quemsomos')" class="hover:text-yellow-400 transition-colors text-left">
+        <button onclick="scrollToSection('quemsomos')" class="nav-link hover:text-yellow-400 transition-colors text-left" data-page="home">
           Quem Somos
         </button>
-        <button onclick="scrollToSection('locacao')" class="hover:text-yellow-400 transition-colors text-left">
+        <button onclick="showPage('locacao')" class="nav-link hover:text-yellow-400 transition-colors text-left" data-page="locacao">
           Locação
         </button>
-        <button onclick="scrollToSection('vendas')" class="hover:text-yellow-400 transition-colors text-left">
+        <button onclick="showPage('vendas')" class="nav-link hover:text-yellow-400 transition-colors text-left" data-page="vendas">
           Vendas
         </button>
-        <button onclick="scrollToSection('automacao')" class="hover:text-yellow-400 transition-colors text-left">
+        <button onclick="showPage('automacao')" class="nav-link hover:text-yellow-400 transition-colors text-left" data-page="automacao">
           Automação Comercial
         </button>
-        <button onclick="scrollToSection('contato')" class="hover:text-yellow-400 transition-colors text-left">
+        <button onclick="scrollToSection('contato')" class="nav-link hover:text-yellow-400 transition-colors text-left" data-page="home">
           Contato
         </button>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="inicio" class="relative w-full h-screen flex items-center justify-center text-white bg-gray-950 overflow-hidden">
-    <canvas id="backgroundEffect" class="absolute inset-0 z-0 pointer-events-none"></canvas>
-    <div class="z-10 max-w-2xl px-4 text-left">
-      <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tec%20branca-xfOV63IyNkkOWDusQ6baU1SDhHLR7I.png" alt="Logo RSP Tecnologia" class="mx-auto w-32 md:w-40 mb-6">
-      <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4">
-        Modernize o seu TI sem os custos e compromissos de aquisição.
-      </h1>
-      <p class="text-lg md:text-xl mb-6 text-gray-300">
-        Concentre-se somente no que importa, e deixe o restante com a gente.
-      </p>
-      <a href="https://wa.me/31995780054" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all transform hover:scale-105 mx-auto">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle mr-2 h-5 w-5">
-          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-        </svg>
-        Quero Alugar
-      </a>
-    </div>
-  </section>
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/31995780054" target="_blank" class="whatsapp-float">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+    </svg>
+    Posso Ajudar?
+  </a>
 
-  <!-- Quem Somos Section -->
-  <section id="quemsomos" class="py-20 bg-gray-50 text-gray-800">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Conheça a RSP Tecnologia</h2>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div class="order-2 lg:order-1">
-          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20tela%202025-05-30%20135345-DHpuGfan1lyIlUI2GkaHFbBHh061un.png" alt="Tecnologia RSP - Soluções Inovadoras" class="w-full h-auto rounded-xl shadow-lg object-cover">
-        </div>
-        <div class="order-1 lg:order-2 text-left">
-          <p class="text-lg mb-6 leading-relaxed">
-            A RSP Tecnologias é uma empresa sediada em Conselheiro Lafaiete – MG, fundada em 2020 com o propósito de oferecer soluções práticas e inteligentes em tecnologia da informação. Desde então, já atendemos centenas de clientes, entre empresas, profissionais liberais e instituições públicas, sempre com foco em qualidade, agilidade e confiança.
-          </p>
-          <p class="text-lg mb-6 leading-relaxed">
-            Nosso trabalho é conduzido por profissionais com mais de 20 anos de experiência no setor de TI, o que nos permite aliar conhecimento técnico sólido a um atendimento personalizado, próximo da realidade dos nossos clientes.
-          </p>
-          <p class="text-lg mb-6 leading-relaxed">
-            Atuamos em quatro frentes principais:<br>
-            • Locação de equipamentos de informática, como notebooks, impressoras e dispositivos de rede;<br>
-            • Consultoria técnica especializada, com foco em infraestrutura de redes, segurança da informação, ambientes virtualizados, automação de processos e soluções em nuvem;<br>
-            • Venda de equipamentos sob demanda, com assessoria completa para escolha, configuração e implantação;<br>
-            • Serviços especializados em manutenção e suporte técnico, tanto preventivos quanto corretivos, para garantir estabilidade e continuidade operacional.
-          </p>
-          <p class="text-lg leading-relaxed">
-            Acreditamos que a tecnologia certa, com o suporte ideal, pode transformar os resultados de qualquer organização. Por isso, nosso compromisso é com a excelência no atendimento e a entrega de soluções que funcionam de verdade.
-          </p>
-        </div>
+  <!-- HOME PAGE -->
+  <div id="home-page" class="page-section active">
+    <!-- Hero Section -->
+    <section id="inicio" class="relative w-full h-screen flex items-center justify-center text-white bg-gray-950 overflow-hidden">
+      <canvas id="backgroundEffect" class="absolute inset-0 z-0 pointer-events-none"></canvas>
+      <div class="z-10 max-w-2xl px-4 text-left">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tec%20branca-xfOV63IyNkkOWDusQ6baU1SDhHLR7I.png" alt="Logo RSP Tecnologia" class="mx-auto w-32 md:w-40 mb-6">
+        <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4">
+          Modernize o seu TI sem os custos e compromissos de aquisição.
+        </h1>
+        <p class="text-lg md:text-xl mb-6 text-gray-300">
+          Concentre-se somente no que importa, e deixe o restante com a gente.
+        </p>
+        <a href="https://wa.me/31995780054" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-all transform hover:scale-105 mx-auto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle mr-2 h-5 w-5">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+          Quero Alugar
+        </a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Services Section -->
-  <section id="servicos" class="py-20 bg-white text-gray-800">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center">Nossos Serviços</h2>
-      <p class="text-lg mb-12 text-center max-w-4xl mx-auto leading-relaxed">
-        Na RSP Tecnologias, oferecemos soluções completas em TI para atender empresas, instituições e profissionais que buscam eficiência, segurança e inovação. Nossos principais serviços incluem:
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
-        <div style="background-color: #f5f4ea;" class="border-2 border-yellow-400 shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 w-full max-w-sm text-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-4xl text-yellow-500 mb-4 mx-auto">
-            <rect width="18" height="12" x="3" y="4" rx="2" ry="2"></rect>
-            <line x1="2" x2="22" y1="20" y2="20"></line>
-          </svg>
-          <h3 class="text-xl font-bold mb-3">Locação de Equipamentos</h3>
-          <p class="text-gray-700 leading-relaxed">Oferecemos notebooks, impressoras e dispositivos de rede para locação, com planos flexíveis e suporte técnico incluso. Ideal para eventos, empresas, escolas e demandas temporárias ou permanentes.</p>
-        </div>
-        <div style="background-color: #f5f4ea;" class="border-2 border-yellow-400 shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 w-full max-w-sm text-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-4xl text-yellow-500 mb-4 mx-auto">
-            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
-          </svg>
-          <h3 class="text-xl font-bold mb-3">Consultoria Técnica Especializada</h3>
-          <p class="text-gray-700 leading-relaxed">Atuamos com projetos de infraestrutura de redes, segurança da informação, virtualização de ambientes, automação de processos e soluções em nuvem, entregando diagnósticos precisos, implementação eficiente e acompanhamento técnico.</p>
-        </div>
-        <div style="background-color: #f5f4ea;" class="border-2 border-yellow-400 shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 w-full max-w-sm text-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-4xl text-yellow-500 mb-4 mx-auto">
-            <circle cx="8" cy="21" r="1"></circle>
-            <circle cx="19" cy="21" r="1"></circle>
-            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
-          </svg>
-          <h3 class="text-xl font-bold mb-3">Venda de Equipamentos</h3>
-          <p class="text-gray-700 leading-relaxed">Trabalhamos com vendas sob demanda, indicando as melhores soluções em notebooks, impressoras, roteadores, servidores e outros dispositivos. Fazemos desde a especificação até a entrega e configuração no local.</p>
-        </div>
-        <div style="background-color: #f5f4ea;" class="border-2 border-yellow-400 shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 w-full max-w-sm text-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-4xl text-yellow-500 mb-4 mx-auto">
-            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-          </svg>
-          <h3 class="text-xl font-bold mb-3">Manutenção e Suporte Técnico</h3>
-          <p class="text-gray-700 leading-relaxed">Realizamos manutenção preventiva e corretiva de computadores, impressoras e redes. Também oferecemos atendimento técnico especializado, com foco em garantir a estabilidade e produtividade dos sistemas.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Rent Section -->
-  <section id="locacao" class="py-20 bg-gray-50 text-gray-800">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Por que Alugar?</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center max-w-6xl mx-auto">
-        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 w-full max-w-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
-            <path d="M12 18V6"></path>
-          </svg>
-          <h3 class="font-semibold text-lg mb-2">Controle de Custos</h3>
-          <p class="text-gray-600">Evite imobilizar capital. Direcione recursos para onde importa.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 w-full max-w-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
-            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-          </svg>
-          <h3 class="font-semibold text-lg mb-2">Benefício Fiscal</h3>
-          <p class="text-gray-600">Dedução de IRPJ para empresas de lucro real.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 w-full max-w-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
-            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
-            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
-          </svg>
-          <h3 class="font-semibold text-lg mb-2">Suporte Técnico</h3>
-          <p class="text-gray-600">Assistência contínua durante todo o contrato de locação.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 w-full max-w-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
-            <path d="M10 17h4V9h-4z"></path>
-            <path d="M4 17h4V5H4z"></path>
-            <path d="M16 17h4v-6h-4z"></path>
-          </svg>
-          <h3 class="font-semibold text-lg mb-2">Logística Inteligente</h3>
-          <p class="text-gray-600">Instalação e suporte para home office e empresas.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 w-full max-w-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-          </svg>
-          <h3 class="font-semibold text-lg mb-2">Infraestrutura Atualizada</h3>
-          <p class="text-gray-600">Equipamentos modernos com upgrades futuros inclusos.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 w-full max-w-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12,6 12,12 16,14"></polyline>
-          </svg>
-          <h3 class="font-semibold text-lg mb-2">Tempo Otimizado</h3>
-          <p class="text-gray-600">Tempo dos colaboradores otimizado para poderem focar em outras funções.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clients Section -->
-  <section class="py-20 bg-white text-gray-800">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center">Nossos Clientes</h2>
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/eletrogen-logo.png-hlaJVkGmbDq2KwxUoxg7vCUFEar326.png" alt="Eletrogen Engenharia" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wm-manutencao-logo.png-JfdcKmO34qA1yOtvG0ZRZVWQv0ahEa.png" alt="WM Manutenções" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/freitas-logo.png-SvagtWsfLDZGzQDygrGU98TIjT4H4b.png" alt="Freitas" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rede-logo.png-UeFHJ97LlKjSRlMfjZ8KFz0mGla6WI.png" alt="Rede" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/geoprojetos-logo.png-vPBUlOfVwVk6UDQh55acmI7rO6Igw8.png" alt="Geoprojetos" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/akafloor-logo.png-pvmOerYTFf4b5ErKFUtIiOKjj9PIri.png" alt="Akafloor" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
-          </div>
-          <div class="swiper-slide">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/gruporicardo-logo.png-Pl3iV7o45i7ttcWeDM3tKUxoJbchCe.png" alt="Grupo Ricardo" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Form Section -->
-  <section id="contato-form" class="contact-bg text-white relative overflow-hidden">
-    <div class="relative z-10 py-20">
+    <!-- Quem Somos Section -->
+    <section id="quemsomos" class="py-20 bg-gray-50 text-gray-800">
       <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
-          <!-- Left Side - Information -->
-          <div class="text-left lg:pr-8">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">RSP Tecnologia</h2>
-            <div class="w-16 h-1 bg-yellow-600 mb-8"></div>
-            
-            <p class="text-lg mb-8 leading-relaxed text-gray-200">
-            Modernize o seu TI sem os custos e compromissos de aquisição. Concentre-se somente no que importa, e deixe o restante com a gente.
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Conheça a RSP Tecnologia</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="order-2 lg:order-1">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20tela%202025-05-30%20135345-DHpuGfan1lyIlUI2GkaHFbBHh061un.png" alt="Tecnologia RSP - Soluções Inovadoras" class="w-full h-auto rounded-xl shadow-lg object-cover">
+          </div>
+          <div class="order-1 lg:order-2 text-left">
+            <p class="text-lg mb-6 leading-relaxed">
+              A RSP Tecnologias é uma empresa sediada em Conselheiro Lafaiete – MG, fundada em 2020 com o propósito de oferecer soluções práticas e inteligentes em tecnologia da informação. Desde então, já atendemos centenas de clientes, entre empresas, profissionais liberais e instituições públicas, sempre com foco em qualidade, agilidade e confiança.
             </p>
-            
-            <!-- Contact Information -->
-            <div class="space-y-4">
-              <div class="flex items-center space-x-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-                <span class="text-lg text-white">(31) 99578-0054</span>
+            <p class="text-lg mb-6 leading-relaxed">
+              Nosso trabalho é conduzido por profissionais com mais de 20 anos de experiência no setor de TI, o que nos permite aliar conhecimento técnico sólido a um atendimento personalizado, próximo da realidade dos nossos clientes.
+            </p>
+            <p class="text-lg mb-6 leading-relaxed">
+              Atuamos em quatro frentes principais:<br>
+              • Locação de equipamentos de informática, como notebooks, impressoras e dispositivos de rede;<br>
+              • Consultoria técnica especializada, com foco em infraestrutura de redes, segurança da informação, ambientes virtualizados, automação de processos e soluções em nuvem;<br>
+              • Venda de equipamentos sob demanda, com assessoria completa para escolha, configuração e implantação;<br>
+              • Serviços especializados em manutenção e suporte técnico, tanto preventivos quanto corretivos, para garantir estabilidade e continuidade operacional.
+            </p>
+            <p class="text-lg leading-relaxed">
+              Acreditamos que a tecnologia certa, com o suporte ideal, pode transformar os resultados de qualquer organização. Por isso, nosso compromisso é com a excelência no atendimento e a entrega de soluções que funcionam de verdade.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="py-20 bg-white text-gray-800">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center">Nossos Serviços</h2>
+        <p class="text-lg mb-12 text-center max-w-4xl mx-auto leading-relaxed">
+          Na RSP Tecnologias, oferecemos soluções completas em TI para atender empresas, instituições e profissionais que buscam eficiência, segurança e inovação. Nossos principais serviços incluem:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+          <div style="background-color: #f5f4ea;" class="border-2 border-yellow-400 shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 w-full max-w-sm text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-4xl text-yellow-500 mb-4 mx-auto">
+              <rect width="18" height="12" x="3" y="4" rx="2" ry="2"></rect>
+              <line x1="2" x2="22" y1="20" y2="20"></line>
+            </svg>
+            <h3 class="text-xl font-bold mb-3">Locação de Equipamentos</h3>
+            <p class="text-gray-700 leading-relaxed">Oferecemos notebooks, impressoras e dispositivos de rede para locação, com planos flexíveis e suporte técnico incluso. Ideal para eventos, empresas, escolas e demandas temporárias ou permanentes.</p>
+          </div>
+          <div style="background-color: #f5f4ea;" class="border-2 border-yellow-400 shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 w-full max-w-sm text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-4xl text-yellow-500 mb-4 mx-auto">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+            <h3 class="text-xl font-bold mb-3">Consultoria Técnica Especializada</h3>
+            <p class="text-gray-700 leading-relaxed">Atuamos com projetos de infraestrutura de redes, segurança da informação, virtualização de ambientes, automação de processos e soluções em nuvem, entregando diagnósticos precisos, implementação eficiente e acompanhamento técnico.</p>
+          </div>
+          <div style="background-color: #f5f4ea;" class="border-2 border-yellow-400 shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 w-full max-w-sm text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-4xl text-yellow-500 mb-4 mx-auto">
+              <circle cx="8" cy="21" r="1"></circle>
+              <circle cx="19" cy="21" r="1"></circle>
+              <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+            </svg>
+            <h3 class="text-xl font-bold mb-3">Venda de Equipamentos</h3>
+            <p class="text-gray-700 leading-relaxed">Trabalhamos com vendas sob demanda, indicando as melhores soluções em notebooks, impressoras, roteadores, servidores e outros dispositivos. Fazemos desde a especificação até a entrega e configuração no local.</p>
+          </div>
+          <div style="background-color: #f5f4ea;" class="border-2 border-yellow-400 shadow-lg hover:shadow-xl p-6 rounded-xl transition-all transform hover:scale-105 w-full max-w-sm text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-4xl text-yellow-500 mb-4 mx-auto">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+            <h3 class="text-xl font-bold mb-3">Manutenção e Suporte Técnico</h3>
+            <p class="text-gray-700 leading-relaxed">Realizamos manutenção preventiva e corretiva de computadores, impressoras e redes. Também oferecemos atendimento técnico especializado, com foco em garantir a estabilidade e produtividade dos sistemas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Rent Section -->
+    <section id="locacao-benefits" class="py-20 bg-gray-50 text-gray-800">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">Por que Alugar?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center max-w-6xl mx-auto">
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 w-full max-w-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+              <path d="M12 18V6"></path>
+            </svg>
+            <h3 class="font-semibold text-lg mb-2">Controle de Custos</h3>
+            <p class="text-gray-600">Evite imobilizar capital. Direcione recursos para onde importa.</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 w-full max-w-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+            <h3 class="font-semibold text-lg mb-2">Benefício Fiscal</h3>
+            <p class="text-gray-600">Dedução de IRPJ para empresas de lucro real.</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 w-full max-w-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+            <h3 class="font-semibold text-lg mb-2">Suporte Técnico</h3>
+            <p class="text-gray-600">Assistência contínua durante todo o contrato de locação.</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 w-full max-w-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
+              <path d="M10 17h4V9h-4z"></path>
+              <path d="M4 17h4V5H4z"></path>
+              <path d="M16 17h4v-6h-4z"></path>
+            </svg>
+            <h3 class="font-semibold text-lg mb-2">Logística Inteligente</h3>
+            <p class="text-gray-600">Instalação e suporte para home office e empresas.</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 w-full max-w-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <h3 class="font-semibold text-lg mb-2">Infraestrutura Atualizada</h3>
+            <p class="text-gray-600">Equipamentos modernos com upgrades futuros inclusos.</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg hover:shadow-xl p-6 transition-all transform hover:scale-105 w-full max-w-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mb-4">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12,6 12,12 16,14"></polyline>
+            </svg>
+            <h3 class="font-semibold text-lg mb-2">Tempo Otimizado</h3>
+            <p class="text-gray-600">Tempo dos colaboradores otimizado para poderem focar em outras funções.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="py-20 bg-white text-gray-800">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center">Nossos Clientes</h2>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/eletrogen-logo.png-hlaJVkGmbDq2KwxUoxg7vCUFEar326.png" alt="Eletrogen Engenharia" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+            </div>
+            <div class="swiper-slide">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/wm-manutencao-logo.png-JfdcKmO34qA1yOtvG0ZRZVWQv0ahEa.png" alt="WM Manutenções" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+            </div>
+            <div class="swiper-slide">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/freitas-logo.png-SvagtWsfLDZGzQDygrGU98TIjT4H4b.png" alt="Freitas" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+            </div>
+            <div class="swiper-slide">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rede-logo.png-UeFHJ97LlKjSRlMfjZ8KFz0mGla6WI.png" alt="Rede" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+            </div>
+            <div class="swiper-slide">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/geoprojetos-logo.png-vPBUlOfVwVk6UDQh55acmI7rO6Igw8.png" alt="Geoprojetos" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+            </div>
+            <div class="swiper-slide">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/akafloor-logo.png-pvmOerYTFf4b5ErKFUtIiOKjj9PIri.png" alt="Akafloor" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+            </div>
+            <div class="swiper-slide">
+              <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/gruporicardo-logo.png-Pl3iV7o45i7ttcWeDM3tKUxoJbchCe.png" alt="Grupo Ricardo" class="max-h-24 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contato-form" class="contact-bg text-white relative overflow-hidden">
+      <div class="relative z-10 py-20">
+        <div class="container mx-auto px-6">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+            <!-- Left Side - Information -->
+            <div class="text-left lg:pr-8">
+              <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">RSP Tecnologia</h2>
+              <div class="w-16 h-1 bg-yellow-600 mb-8"></div>
+              
+              <p class="text-lg mb-8 leading-relaxed text-gray-200">
+              Modernize o seu TI sem os custos e compromissos de aquisição. Concentre-se somente no que importa, e deixe o restante com a gente.
+              </p>
+              
+              <!-- Contact Information -->
+              <div class="space-y-4">
+                <div class="flex items-center space-x-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  <span class="text-lg text-white">(31) 99578-0054</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  <span class="text-lg text-white">contato@rsptech.com.br</span>
+                </div>
               </div>
-              <div class="flex items-center space-x-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
+            </div>
+
+            <!-- Right Side - Contact Form -->
+            <div class="relative">
+              <div class="text-center mb-8">
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Fale conosco</h3>
+                <p class="text-gray-300">Agende sua reunião preenchendo o formulário abaixo</p>
+              </div>
+              
+              <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6">
+                <div>
+                  <input 
+                    type="text" 
+                    id="nome" 
+                    name="nome" 
+                    required 
+                    class="w-full px-4 py-4 bg-transparent border border-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-yellow-600 transition-colors text-white placeholder-gray-300"
+                    placeholder="Seu nome"
+                  >
+                </div>
+                
+                <div>
+                  <input 
+                    type="tel" 
+                    id="telefone" 
+                    name="telefone" 
+                    required 
+                    class="w-full px-4 py-4 bg-transparent border border-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-yellow-600 transition-colors text-white placeholder-gray-300"
+                    placeholder="Seu telefone"
+                  >
+                </div>
+                
+                <div>
+                  <textarea 
+                    id="mensagem" 
+                    name="mensagem" 
+                    rows="5" 
+                    required 
+                    class="w-full px-4 py-4 bg-transparent border border-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-yellow-600 transition-colors resize-vertical text-white placeholder-gray-300"
+                    placeholder="Sua mensagem"
+                  ></textarea>
+                </div>
+                
+                <button 
+                  type="submit" 
+                  class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-4 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg text-lg"
+                >
+                  Enviar
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- LOCAÇÃO PAGE -->
+  <div id="locacao-page" class="page-section page-bg">
+    <main class="py-20">
+      <div class="container mx-auto px-6">
+        <h1 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800">Locação de Equipamentos</h1>
+        
+        <!-- Locação de Notebooks Section -->
+        <section class="mb-20">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+              <img src="/placeholder.svg?height=400&width=600" alt="Notebooks para locação" class="w-full h-auto rounded-xl shadow-lg object-cover">
+            </div>
+            <div class="order-1 lg:order-2">
+              <h2 class="text-3xl font-bold mb-6 text-gray-800">Locação de Notebooks</h2>
+              <p class="text-lg mb-6 leading-relaxed text-gray-700">
+                Oferecemos notebooks de marcas renomadas, prontos para uso e ideais para períodos pré-determinados. Nossos equipamentos já vêm com software instalado e suporte técnico incluso, garantindo que você tenha tudo o que precisa para trabalhar com eficiência desde o primeiro dia.
+              </p>
+              <p class="text-lg mb-6 leading-relaxed text-gray-700">
+                Um dos nossos principais diferenciais é a garantia de troca do notebook em até 24 horas em caso de defeito, assegurando que sua produtividade não seja interrompida.
+              </p>
+              
+              <!-- Tabela de Preços -->
+              <div class="bg-white rounded-lg shadow-lg p-6 border border-yellow-400">
+                <h3 class="text-xl font-bold mb-4 text-gray-800">Tabela de Preços</h3>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left">
+                    <thead>
+                      <tr class="border-b border-gray-200">
+                        <th class="py-3 px-4 font-semibold text-gray-800">Descrição</th>
+                        <th class="py-3 px-4 font-semibold text-gray-800">Diária</th>
+                        <th class="py-3 px-4 font-semibold text-gray-800">Semana</th>
+                        <th class="py-3 px-4 font-semibold text-gray-800">Quinzena</th>
+                        <th class="py-3 px-4 font-semibold text-gray-800">Mensal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b border-gray-100">
+                        <td class="py-3 px-4 text-gray-700">Notebook</td>
+                        <td class="py-3 px-4 text-gray-700">R$ 25,00</td>
+                        <td class="py-3 px-4 text-gray-700">R$ 80,00</td>
+                        <td class="py-3 px-4 text-gray-700">R$ 130,00</td>
+                        <td class="py-3 px-4 text-gray-700">R$ 190,00</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Locação de Impressoras Section -->
+        <section>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-1 lg:order-1">
+              <h2 class="text-3xl font-bold mb-6 text-gray-800">Locação de Impressoras</h2>
+              <p class="text-lg mb-6 leading-relaxed text-gray-700">
+                A locação de impressoras é uma solução inteligente para empresas que buscam otimizar custos e garantir máxima produtividade. Oferecemos instalação completa, manutenção preventiva e corretiva, suporte técnico especializado, economia com insumos e disponibilidade total dos equipamentos.
+              </p>
+              
+              <div class="bg-white rounded-lg shadow-lg p-6 border border-yellow-400 mb-6">
+                <h3 class="text-xl font-bold mb-4 text-gray-800">Benefícios da Locação</h3>
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-start space-x-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500 mt-1 flex-shrink-0">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Sem investimento inicial elevado</span>
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500 mt-1 flex-shrink-0">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Equipamentos semi-novos e atualizados</span>
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500 mt-1 flex-shrink-0">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Economia significativa com suprimentos</span>
+                  </li>
+                  <li class="flex items-start space-x-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500 mt-1 flex-shrink-0">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Consultoria técnica especializada inclusa</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <p class="text-lg leading-relaxed text-gray-700">
+                Entre em contato conosco e solicite uma cotação personalizada para suas necessidades. Nossa equipe está pronta para oferecer a melhor solução em locação de impressoras para sua empresa.
+              </p>
+            </div>
+            <div class="order-2 lg:order-2">
+              <img src="/placeholder.svg?height=400&width=600" alt="Impressoras para locação" class="w-full h-auto rounded-xl shadow-lg object-cover">
+            </div>
+          </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="mt-20 text-center">
+          <div class="bg-white rounded-xl shadow-lg p-8 border border-yellow-400">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">Pronto para Modernizar seu TI?</h3>
+            <p class="text-lg mb-6 text-gray-700">
+              Entre em contato conosco e descubra como a locação de equipamentos pode transformar sua produtividade.
+            </p>
+            <a href="https://wa.me/31995780054" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all transform hover:scale-105">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+              Solicitar Cotação
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- VENDAS PAGE -->
+  <div id="vendas-page" class="page-section page-bg">
+    <main class="py-20">
+      <div class="container mx-auto px-6">
+        <h1 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800">Venda de Equipamentos</h1>
+        
+        <!-- Venda de Notebooks Usados Section -->
+        <section class="mb-20">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+              <img src="/placeholder.svg?height=400&width=600" alt="Notebooks usados certificados" class="w-full h-auto rounded-xl shadow-lg object-cover">
+            </div>
+            <div class="order-1 lg:order-2">
+              <h2 class="text-3xl font-bold mb-6 text-gray-800">Venda de Notebooks Usados</h2>
+              <p class="text-lg mb-6 leading-relaxed text-gray-700">
+                Todos os nossos notebooks usados passam por um rigoroso processo de revisão e certificação, garantindo que você receba um equipamento em perfeitas condições de funcionamento e com desempenho otimizado.
+              </p>
+              <p class="text-lg mb-6 leading-relaxed text-gray-700">
+                Trabalhamos exclusivamente com as marcas mais confiáveis do mercado: <strong>DELL</strong>, <strong>HP</strong> e <strong>Lenovo</strong>, reconhecidas mundialmente pela qualidade e durabilidade de seus produtos.
+              </p>
+              <div class="bg-white rounded-lg shadow-lg p-6 border border-yellow-400 mb-6">
+                <h3 class="text-xl font-bold mb-4 text-gray-800">Garantia Inclusa</h3>
+                <p class="text-gray-700 mb-4">
+                  Todos os notebooks usados vêm com <strong>1 ano de garantia completa</strong>, oferecendo total tranquilidade na sua compra.
+                </p>
+                <div class="flex items-center space-x-2 text-green-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 12l2 2 4-4"></path>
+                    <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1H3c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h18z"></path>
+                  </svg>
+                  <span class="font-semibold">Garantia de 1 ano</span>
+                </div>
+              </div>
+              <p class="text-lg leading-relaxed text-gray-700">
+                Entre em contato conosco para consultar a disponibilidade de modelos e configurações que atendam às suas necessidades específicas.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Computadores Novos e Usados Section -->
+        <section>
+          <h2 class="text-3xl font-bold mb-12 text-center text-gray-800">Computadores Novos e Usados</h2>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+            <!-- Computadores Novos -->
+            <div class="bg-white rounded-xl shadow-lg p-8 border border-yellow-400">
+              <div class="text-center mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mx-auto mb-4">
+                  <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                  <line x1="8" x2="16" y1="21" y2="21"></line>
+                  <line x1="12" x2="12" y1="17" y2="21"></line>
                 </svg>
-                <span class="text-lg text-white">contato@rsptech.com.br</span>
+                <h3 class="text-2xl font-bold text-gray-800">Computadores Novos</h3>
+              </div>
+              <p class="text-lg mb-6 leading-relaxed text-gray-700">
+                Nossos computadores novos são montados sob demanda, utilizando exclusivamente peças de alta qualidade e tecnologia de ponta. Cada configuração é personalizada para atender às necessidades específicas do cliente.
+              </p>
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center space-x-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="text-gray-700">Montagem sob demanda</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="text-gray-700">Peças de alta qualidade</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="text-gray-700">1 ano de garantia</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Computadores Usados -->
+            <div class="bg-white rounded-xl shadow-lg p-8 border border-yellow-400">
+              <div class="text-center mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mx-auto mb-4">
+                  <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                  <line x1="8" x2="16" y1="21" y2="21"></line>
+                  <line x1="12" x2="12" y1="17" y2="21"></line>
+                </svg>
+                <h3 class="text-2xl font-bold text-gray-800">Computadores Usados</h3>
+              </div>
+              <p class="text-lg mb-6 leading-relaxed text-gray-700">
+                Nossos computadores usados passam por revisão completa e também possuem 1 ano de garantia. Em caso de falha durante o período de garantia, realizamos a troca do equipamento.
+              </p>
+              <div class="space-y-3 mb-6">
+                <div class="flex items-center space-x-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="text-gray-700">Revisão completa</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="text-gray-700">1 ano de garantia</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="text-gray-700">Troca em caso de falha</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Right Side - Contact Form -->
-          <div class="relative">
-            <div class="text-center mb-8">
-              <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Fale conosco</h3>
-              <p class="text-gray-300">Agende sua reunião preenchendo o formulário abaixo</p>
+          <!-- Call to Action -->
+          <div class="text-center">
+            <div class="bg-white rounded-xl shadow-lg p-8 border border-yellow-400">
+              <h3 class="text-2xl font-bold mb-4 text-gray-800">Sem Burocracia</h3>
+              <p class="text-lg mb-6 text-gray-700">
+                Consulte a disponibilidade de equipamentos e encontre a solução perfeita para suas necessidades.
+              </p>
+              <a href="https://wa.me/31995780054" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all transform hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+                Consultar Disponibilidade
+              </a>
             </div>
-            
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6">
-              <div>
-                <input 
-                  type="text" 
-                  id="nome" 
-                  name="nome" 
-                  required 
-                  class="w-full px-4 py-4 bg-transparent border border-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-yellow-600 transition-colors text-white placeholder-gray-300"
-                  placeholder="Seu nome"
-                >
-              </div>
-              
-              <div>
-                <input 
-                  type="tel" 
-                  id="telefone" 
-                  name="telefone" 
-                  required 
-                  class="w-full px-4 py-4 bg-transparent border border-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-yellow-600 transition-colors text-white placeholder-gray-300"
-                  placeholder="Seu telefone"
-                >
-              </div>
-              
-              <div>
-                <textarea 
-                  id="mensagem" 
-                  name="mensagem" 
-                  rows="5" 
-                  required 
-                  class="w-full px-4 py-4 bg-transparent border border-gray-400 rounded-lg focus:ring-2 focus:ring-yellow-600 focus:border-yellow-600 transition-colors resize-vertical text-white placeholder-gray-300"
-                  placeholder="Sua mensagem"
-                ></textarea>
-              </div>
-              
-              <button 
-                type="submit" 
-                class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-4 px-6 rounded-lg transition-all transform hover:scale-105 shadow-lg text-lg"
-              >
-                Enviar
-              </button>
-            </form>
           </div>
-        </div>
+        </section>
       </div>
-    </div>
-  </section>
+    </main>
+  </div>
+
+  <!-- AUTOMAÇÃO PAGE -->
+  <div id="automacao-page" class="page-section page-bg">
+    <main class="py-20">
+      <div class="container mx-auto px-6">
+        <h1 class="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-800">Automação Comercial</h1>
+        
+        <!-- Software de Gestão Section -->
+        <section class="mb-20">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+              <img src="/placeholder.svg?height=400&width=600" alt="Software de gestão comercial" class="w-full h-auto rounded-xl shadow-lg object-cover">
+            </div>
+            <div class="order-1 lg:order-2">
+              <h2 class="text-3xl font-bold mb-6 text-gray-800">Software de Gestão</h2>
+              <p class="text-lg mb-6 leading-relaxed text-gray-700">
+                Oferecemos sistemas de gestão completos para diversos perfis de negócio, desde MEI até grandes empresas do varejo. Nossos softwares são desenvolvidos para atender às necessidades específicas de cada segmento, proporcionando controle total sobre vendas, estoque, financeiro e muito mais.
+              </p>
+              <p class="text-lg mb-6 leading-relaxed text-gray-700">
+                Disponibilizamos tanto a versão local quanto a versão web, garantindo flexibilidade e acessibilidade para que você possa gerenciar seu negócio de qualquer lugar, a qualquer momento.
+              </p>
+              
+              <div class="bg-white rounded-lg shadow-lg p-6 border border-yellow-400 mb-6">
+                <h3 class="text-xl font-bold mb-4 text-gray-800">Planos Acessíveis</h3>
+                <div class="flex items-center space-x-3 mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                    <path d="M12 18V6"></path>
+                  </svg>
+                  <span class="text-2xl font-bold text-gray-800">A partir de R$ 59,00 mensais</span>
+                </div>
+                <p class="text-gray-700">
+                  Planos flexíveis que se adaptam ao tamanho e necessidades do seu negócio.
+                </p>
+              </div>
+
+              <div class="space-y-3">
+                <div class="flex items-center space-x-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="text-gray-700">Versão local e web disponíveis</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="text-gray-700">Adequado para MEI ao varejo</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="text-gray-700">Suporte técnico incluso</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Equipamentos para Automação Section -->
+        <section>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-1 lg:order-1">
+              <h2 class="text-3xl font-bold mb-6 text-gray-800">Equipamentos para Automação</h2>
+              <p class="text-lg mb-6 leading-relaxed text-gray-700">
+                Fornecemos todos os equipamentos necessários para a automação completa do seu negócio. Nossa linha inclui computadores, notebooks, leitores de código de barras, scanners, impressoras térmicas e balanças digitais, todos integrados ao sistema de gestão.
+              </p>
+              
+              <div class="bg-white rounded-lg shadow-lg p-6 border border-yellow-400 mb-6">
+                <h3 class="text-xl font-bold mb-4 text-gray-800">Benefício Especial</h3>
+                <div class="flex items-start space-x-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mt-1 flex-shrink-0">
+                    <path d="M9 12l2 2 4-4"></path>
+                    <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1H3c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h18z"></path>
+                  </svg>
+                  <div>
+                    <p class="font-semibold text-gray-800 mb-2">Notebook ou Computador Gratuito</p>
+                    <p class="text-gray-700">
+                      Fornecemos notebook ou computador gratuito por dois meses para o início da automação do seu negócio.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="text-center p-4 bg-white rounded-lg shadow border border-gray-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mx-auto mb-2">
+                    <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                    <line x1="8" x2="16" y1="21" y2="21"></line>
+                    <line x1="12" x2="12" y1="17" y2="21"></line>
+                  </svg>
+                  <p class="text-sm font-medium text-gray-700">Computadores</p>
+                </div>
+                <div class="text-center p-4 bg-white rounded-lg shadow border border-gray-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mx-auto mb-2">
+                    <rect width="18" height="12" x="3" y="4" rx="2" ry="2"></rect>
+                    <line x1="2" x2="22" y1="20" y2="20"></line>
+                  </svg>
+                  <p class="text-sm font-medium text-gray-700">Notebooks</p>
+                </div>
+                <div class="text-center p-4 bg-white rounded-lg shadow border border-gray-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mx-auto mb-2">
+                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                    <rect width="12" height="8" x="6" y="14"></rect>
+                  </svg>
+                  <p class="text-sm font-medium text-gray-700">Impressoras</p>
+                </div>
+                <div class="text-center p-4 bg-white rounded-lg shadow border border-gray-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 mx-auto mb-2">
+                    <path d="M3 7V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2"></path>
+                    <path d="M3 7h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"></path>
+                    <path d="M9 12h6"></path>
+                  </svg>
+                  <p class="text-sm font-medium text-gray-700">Balanças</p>
+                </div>
+              </div>
+            </div>
+            <div class="order-2 lg:order-2">
+              <img src="/placeholder.svg?height=400&width=600" alt="Equipamentos para automação comercial" class="w-full h-auto rounded-xl shadow-lg object-cover">
+            </div>
+          </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="mt-20 text-center">
+          <div class="bg-white rounded-xl shadow-lg p-8 border border-yellow-400">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">Pronto para Automatizar seu Negócio?</h3>
+            <p class="text-lg mb-6 text-gray-700">
+              Entre em contato conosco e descubra como a automação comercial pode revolucionar sua empresa.
+            </p>
+            <a href="https://wa.me/31995780054" target="_blank" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all transform hover:scale-105">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+              Solicitar Demonstração
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
 
   <!-- Footer -->
   <footer id="contato" class="bg-header text-white py-10 px-6">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
       <div>
         <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Tec%20branca-xfOV63IyNkkOWDusQ6baU1SDhHLR7I.png" alt="Logo RSP Tecnologia" class="h-10 w-auto mb-4">
         <p class="text-gray-300 mb-4">Concentre-se somente no que importa, e deixe o restante com a gente.</p>
@@ -513,7 +962,7 @@
         <h3 class="font-bold text-lg mb-4">Links Rápidos</h3>
         <ul class="space-y-2 text-gray-300">
           <li>
-            <button onclick="scrollToSection('inicio')" class="hover:text-yellow-400 transition-colors">
+            <button onclick="showPage('home')" class="hover:text-yellow-400 transition-colors">
               Home
             </button>
           </li>
@@ -523,17 +972,17 @@
             </button>
           </li>
           <li>
-            <button onclick="scrollToSection('locacao')" class="hover:text-yellow-400 transition-colors">
+            <button onclick="showPage('locacao')" class="hover:text-yellow-400 transition-colors">
               Locação
             </button>
           </li>
           <li>
-            <button onclick="scrollToSection('vendas')" class="hover:text-yellow-400 transition-colors">
+            <button onclick="showPage('vendas')" class="hover:text-yellow-400 transition-colors">
               Vendas
             </button>
           </li>
           <li>
-            <button onclick="scrollToSection('automacao')" class="hover:text-yellow-400 transition-colors">
+            <button onclick="showPage('automacao')" class="hover:text-yellow-400 transition-colors">
               Automação Comercial
             </button>
           </li>
@@ -547,12 +996,41 @@
       <div>
         <h3 class="font-bold text-lg mb-4">Serviços</h3>
         <ul class="space-y-2 text-gray-300">
-          <li>Locação de Notebooks</li>
-          <li>Venda de Computadores</li>
-          <li>Serviços de Redes</li>
-          <li>Assistência Técnica</li>
-          <li>Automação Comercial</li>
+          <li>• Locação de Equipamentos</li>
+          <li>• Consultoria Técnica Especializada</li>
+          <li>• Venda de Equipamentos</li>
+          <li>• Manutenção e Suporte Técnico</li>
         </ul>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg mb-4">Contato</h3>
+        <div class="space-y-3 text-gray-300">
+          <div class="flex items-start space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-1 flex-shrink-0">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <div class="text-sm">
+              <p>Rua Coronel João Gomes, 13</p>
+              <p>Santo Antônio</p>
+              <p>Conselheiro Lafaiete, MG</p>
+              <p>CEP 36401-126</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span class="text-sm">contato@rsptech.com.br</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span class="text-sm">(31) 99578-0054</span>
+          </div>
+        </div>
       </div>
     </div>
     <div class="text-center text-sm mt-10 text-gray-400 border-t border-gray-700 pt-6">
@@ -564,6 +1042,74 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
+    let currentPage = 'home';
+
+    // Show/Hide pages function
+    function showPage(page) {
+      // Hide all pages
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Show selected page
+      document.getElementById(page + '-page').classList.add('active');
+      
+      // Update current page
+      currentPage = page;
+      
+      // Update navigation active states
+      updateNavigation();
+      
+      // Close mobile menu if open
+      closeMobileMenu();
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+
+    // Update navigation active states
+    function updateNavigation() {
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('text-yellow-400');
+        if (link.dataset.page === currentPage) {
+          link.classList.add('text-yellow-400');
+        }
+      });
+    }
+
+    // Smooth scroll function for home page sections
+    function scrollToSection(sectionId) {
+      if (currentPage !== 'home') {
+        showPage('home');
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+      
+      closeMobileMenu();
+    }
+
+    // Close mobile menu
+    function closeMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuIcon = document.getElementById('menuIcon');
+      const closeIcon = document.getElementById('closeIcon');
+      
+      if (!mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        closeIcon.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+      }
+    }
+
     // Mobile menu toggle
     document.addEventListener('DOMContentLoaded', function() {
       const menuToggle = document.getElementById('menuToggle');
@@ -601,26 +1147,10 @@
           },
         },
       });
-    });
 
-    // Smooth scroll function
-    function scrollToSection(sectionId) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-      
-      // Close mobile menu if open
-      const mobileMenu = document.getElementById('mobileMenu');
-      const menuIcon = document.getElementById('menuIcon');
-      const closeIcon = document.getElementById('closeIcon');
-      
-      if (!mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-        closeIcon.classList.add('hidden');
-        menuIcon.classList.remove('hidden');
-      }
-    }
+      // Initialize navigation
+      updateNavigation();
+    });
 
     // Canvas background animation
     document.addEventListener('DOMContentLoaded', function() {
