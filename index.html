@@ -1072,17 +1072,13 @@
       window.scrollTo(0, 0);
     }
 
-    // Update navigation active states
-    function updateNavigation() {
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('text-yellow-400');
-        link.classList.add('text-white');
-        if (link.dataset.page === currentPage) {
-          link.classList.remove('text-white');
-          link.classList.add('text-yellow-400');
-        }
-      });
-    }
+   // Update navigation active states
+function updateNavigation() {
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.classList.remove('text-yellow-400');
+    link.classList.add('text-white');
+  });
+}
 
     // Smooth scroll function for home page sections
     function scrollToSection(sectionId) {
